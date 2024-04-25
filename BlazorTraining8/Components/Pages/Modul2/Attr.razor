@@ -1,0 +1,32 @@
+﻿@page "/attr"
+@using Microsoft.AspNetCore.Authorization
+@* @attribute [Authorize]
+ *@<h3>Attr</h3>
+
+
+<input class="form-control" @bind="Eingabe" @ref="input1"/>
+<div class="input-group mb-3" @onclick="click">
+    <input class="form-control" @bind="Eingabe" @onkeydown="KeyDown"/>
+
+    <button class="btn btn-outline-primary" @onclick="click">click</button>
+</div>
+ 
+ <hr />
+ @Eingabe
+@code {
+    string Eingabe;
+    ElementReference input1;
+    void click()
+    {
+
+    }
+
+    void KeyDown(KeyboardEventArgs args)
+    {
+        if (args.Key=="O")
+        {
+            input1.FocusAsync();
+
+        }
+    }
+}
