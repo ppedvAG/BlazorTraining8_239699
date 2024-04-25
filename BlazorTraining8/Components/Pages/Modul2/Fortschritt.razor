@@ -6,12 +6,12 @@
 
 <div class="progress" style="height: 40px;">
     <div class="progress-bar bg-success" role="progressbar"
-         style='width:@(((currentCount/10)*100).ToString("N0"))%;'>
+         style='width:@((10*currentCount).ToString("N0"))%;'>
         @currentCount
     </div>
     <div class='progress-bar bg-success'
          role="progressbar">
-        @(((10 - currentCount) / currentCount * 100 + 100).ToString("N0"))%
+       10
     </div>
 
 </div>
