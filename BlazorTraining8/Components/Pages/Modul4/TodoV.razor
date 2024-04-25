@@ -1,0 +1,46 @@
+﻿@page "/todoV"
+@inject IHttpClientFactory client
+<h3>ToDoView</h3>
+<div class="container">
+ 
+    <div class="row">
+        <div class="col">
+
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item">ToDo </li>
+
+                @if (Todos == null)
+                {
+                    <li class="list-group-item">Lade.... </li>
+                }
+                else
+                {
+                   
+                    <Virtualize Items="Todos.todos" Context="item" OverscanCount="5"  >
+                        <ItemContent>
+                            <li class="list-group-item" @key="item.id">@item.todo </li>
+
+                        </ItemContent>
+                        
+                    </Virtualize>
+
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+@code {
+    TodoModel Todos;
+    string Eingabe = "";
+    protected override async Task OnInitializedAsync()
+    {
+        using (var http = client.CreateClient())
+        {
+            Todos = await http.GetFromJsonAsync<TodoModel>("https://dummyjson.com/todos?limit=150");
+        }
+
+
+    }
+
+}
