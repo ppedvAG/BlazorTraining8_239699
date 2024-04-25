@@ -18,13 +18,25 @@
     {
         pls.SetAsync("passwort", passwort);
     }
-    protected override async Task OnInitializedAsync()
-    {
-        var ret= await pls.GetAsync<string>("passwort");
-        if (ret.Success)
-        {
-            passwort = ret.Value;
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     var ret= await pls.GetAsync<string>("passwort");
+    //     if (ret.Success)
+    //     {
+    //         passwort = ret.Value;
 
+    //     }
+    // }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var ret = await pls.GetAsync<string>("passwort");
+            if (ret.Success)
+            {
+                passwort = ret.Value;
+                StateHasChanged();
+            }
         }
     }
 }
