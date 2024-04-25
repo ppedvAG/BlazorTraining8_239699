@@ -1,0 +1,8 @@
+﻿@page "/test"
+@page "/person/{id:int?}"
+<h3>Routentest @id</h3>
+<Component></Component>
+@code {
+    [Parameter]
+    public int id { get; set; }
+}
