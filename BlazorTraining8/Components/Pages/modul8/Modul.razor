@@ -1,0 +1,18 @@
+﻿@page "/js1"
+@inject IJSRuntime js
+<h3>Modul</h3>
+<button @onclick="alert">js</button>
+@code {
+    IJSObjectReference minijs;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            minijs= await  js.InvokeAsync<IJSObjectReference>("import", "./Components/Pages/modul8/Modul.razor.js");
+        }
+    }
+    void alert()
+    {
+        minijs.InvokeVoidAsync("ppedv", "hallo ppedv");
+    }
+}
