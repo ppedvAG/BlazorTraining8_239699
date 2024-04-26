@@ -1,6 +1,9 @@
 ﻿<h3>@Titel</h3>
 <p>Antwort auf dei Frage @Antwort</p>
-<div @attributes="MyProperty">hallo</div>
+<div @attributes="MyProperty">hallo @ChildContent</div>
+@ItemTemplate
+
+@EmptyItemTemplate
 @code {
     [Parameter]
     [EditorRequired]
@@ -9,4 +12,12 @@
     public int Antwort { get; set; }
     [Parameter(CaptureUnmatchedValues =true)]
     public Dictionary<string,object> MyProperty { get; set; }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public RenderFragment ItemTemplate { get; set; }
+    [Parameter]
+    public RenderFragment EmptyItemTemplate { get; set; }
+
 }
+ 
