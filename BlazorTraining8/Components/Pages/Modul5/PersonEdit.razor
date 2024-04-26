@@ -44,14 +44,15 @@
 </EditForm>
 
 @code {
-    Person VM = new Person();
-    EditContext CTX;
-    void save(EditContext ctx)
-    {
+        Person VM = new Person();
+        EditContext CTX;
+        void save(EditContext ctx)
+        {
 
-    }
+        }
     protected override void OnInitialized()
     {
         CTX = new EditContext(VM);
+        CTX.SetFieldCssClassProvider(new BoostrapFixFieldCSSClassProvider());
     }
 }
