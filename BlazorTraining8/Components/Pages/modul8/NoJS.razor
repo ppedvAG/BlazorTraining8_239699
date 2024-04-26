@@ -1,0 +1,19 @@
+﻿@page "/nojs"
+@using RazorClassLibrary1
+@inject IJSRuntime jsruntime
+@inject ExampleJsInterop ejs
+<h3>NoJS</h3>
+
+<button @onclick="alert">alert </button>
+@code {
+
+    async Task alert()
+    {
+
+        var js = new ExampleJsInterop(jsruntime);
+        var ret=await js.Prompt("Hallo Welt");
+
+        var ret2 = await ejs.Prompt("Hallo Welt");
+    }
+
+}
