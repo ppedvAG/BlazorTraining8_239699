@@ -1,0 +1,22 @@
+﻿@page "/js"
+@inject IJSRuntime Js
+<h3>JSComponent</h3>
+<button @onclick="alert">alert</button>
+@if (auswahl)
+{
+    <div class="alert alert-primary" role="alert">
+        A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+    </div>
+}
+
+@code {
+    bool auswahl;
+    async Task alert()
+    {
+        Js.InvokeVoidAsync("eval", "document.title='Hallo Eval'");
+
+        auswahl= await Js.InvokeAsync<bool>("confirm", "wirklich");
+     //   StateHasChanged();
+
+    }
+}
