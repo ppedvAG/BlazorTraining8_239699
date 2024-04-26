@@ -1,0 +1,12 @@
+﻿<h3>@Titel</h3>
+<p>Antwort auf dei Frage @Antwort</p>
+<div @attributes="MyProperty">hallo</div>
+@code {
+    [Parameter]
+    [EditorRequired]
+    public string Titel { get; set; }
+    [CascadingParameter()]
+    public int Antwort { get; set; }
+    [Parameter(CaptureUnmatchedValues =true)]
+    public Dictionary<string,object> MyProperty { get; set; }
+}
